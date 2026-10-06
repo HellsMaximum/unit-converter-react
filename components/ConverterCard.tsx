@@ -18,6 +18,9 @@ const ConverterCard = ({
 
   const result = Number(amount) * factor;
 
+  const isEmpty = amount === "";
+  const answer = isEmpty ? "—" : result.toFixed(2);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
   };
@@ -54,7 +57,7 @@ hover:bg-blue-700 transition cursor-pointer"
           {toUnit}
         </p>
         <p className="text-2xl font-bold text-blue-600 mt-1">
-          {result.toFixed(2)}
+          {answer}
         </p>
       </div>
     </div>
