@@ -16,6 +16,7 @@ const ConverterCard = ({
 }: ConverterCardProps) => {
   const [amount, setAmount] = useState("0");
   const [swapped, setSwapped] = useState(false);
+  const [fixedSize, setFixedSize] = useState(2);
 
   const inputUnit = swapped ? toUnit : fromUnit;
   const outputUnit = swapped ? fromUnit : toUnit;
@@ -24,7 +25,7 @@ const ConverterCard = ({
   const result = Number(amount) * rate;
 
   const isEmpty = amount === "";
-  const answer = isEmpty ? "—" : result.toFixed(2);
+  const answer = isEmpty ? "—" : result.toFixed(fixedSize);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
@@ -69,13 +70,38 @@ transition cursor-pointer"
           Swap
         </button>
         <button
-          onClick={handleReset}
+          onClick={() => {
+            handleReset();
+            setFixedSize(2);
+          }} 
           className="flex-1 rounded-lg bg-blue-600 px-4 py-2 font-semibold
 text-white hover:bg-blue-700 transition cursor-pointer"
         >
           Reset
         </button>
       </div>
+
+      <div className="flex gap-3 mt-4">
+                <button
+          onClick={() => setFixedSize(0)}
+          className="flex-1 rounded-lg border border-slate-300 px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+        >
+          0 Decimals
+        </button>
+        <button
+          onClick={() => setFixedSize(2)}
+          className="flex-1 rounded-lg border border-slate-300 px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+        >
+          2 Decimals
+        </button>
+        <button
+          onClick={() => setFixedSize(4)}
+          className="flex-1 rounded-lg border border-slate-300 px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100 transition cursor-pointer"
+        >
+          4 Decimals
+        </button>
+      </div>
+
       <div className="mt-5 rounded-lg bg-slate-50 p-4 text-center">
         <p className="text-xs uppercase tracking-wide text-slate-500">
           {outputUnit}
