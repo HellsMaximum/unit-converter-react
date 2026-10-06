@@ -12,7 +12,7 @@ const Home = () => {
           component that remembers what you typed and converts both ways.
         </p>
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
         {converters.map((converter) => (
           <ConverterCard
             key={converter.id}
