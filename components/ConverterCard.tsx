@@ -54,6 +54,11 @@ const ConverterCard = ({
         className="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-900
 focus:border-blue-500 focus:outline-none"
       />
+
+      <p className="text-xs text-slate-400 mt-3 text-center">
+{inputUnit} * {rate.toFixed(4)} = {outputUnit}
+</p>
+
       <div className="flex gap-3 mt-4">
         <button
           onClick={handleSwap}
