@@ -3,6 +3,8 @@ import { useState } from "react";
 const ConverterCard = () => {
   const [amount, setAmount] = useState("0");
 
+  const result = Number(amount) * 2.20462;
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
   };
@@ -17,6 +19,7 @@ const ConverterCard = () => {
 focus:border-blue-500 focus:outline-none"
       />
       <p>You typed: {amount}</p>
+      <p>{result.toFixed(2)}</p>
     </div>
   );
 };
