@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Nav";
+import Navbar from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "Unit Converter",
   description: "CPRG 306 Week 4 activity",
