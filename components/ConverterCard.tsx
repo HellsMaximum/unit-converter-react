@@ -29,7 +29,6 @@ hover:bg-blue-700 transition cursor-pointer"
       >
         Reset
       </button>
-      <p>You typed: {amount}</p>
       <p>{result.toFixed(2)}</p>
     </div>
   );
