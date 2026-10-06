@@ -1,9 +1,22 @@
 "use client";
 import { useState } from "react";
-const ConverterCard = () => {
+
+interface ConverterCardProps {
+  title: string;
+  fromUnit: string;
+  toUnit: string;
+  factor: number;
+}
+
+const ConverterCard = ({
+  title,
+  fromUnit,
+  toUnit,
+  factor,
+}: ConverterCardProps) => {
   const [amount, setAmount] = useState("0");
 
-  const result = Number(amount) * 2.20462;
+  const result = Number(amount) * factor;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(event.target.value);
@@ -15,6 +28,13 @@ const ConverterCard = () => {
 
   return (
     <div className="bg-white rounded-2xl shadow-md p-6">
+      <h3 className="text-lg font-bold text-slate-900">{title}</h3>
+      <p className="text-sm text-slate-500 mt-1">
+        {fromUnit} to {toUnit}
+      </p>
+      <label className="block text-sm font-medium text-slate-700 mt-5 mb-2">
+        {fromUnit}
+      </label>
       <input
         type="number"
         value={amount}
@@ -29,7 +49,14 @@ hover:bg-blue-700 transition cursor-pointer"
       >
         Reset
       </button>
-      <p>{result.toFixed(2)}</p>
+      <div className="mt-5 rounded-lg bg-slate-50 p-4 text-center">
+        <p className="text-xs uppercase tracking-wide text-slate-500">
+          {toUnit}
+        </p>
+        <p className="text-2xl font-bold text-blue-600 mt-1">
+          {result.toFixed(2)}
+        </p>
+      </div>
     </div>
   );
 };
